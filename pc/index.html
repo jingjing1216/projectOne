@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/fullPage.js/2.9.7/jquery.fullpage.min.css">
+    
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/fullPage.js/2.9.7/jquery.fullpage.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        // //section-bg高度
+        // $('.section-bg').each(function(index, el) {
+        //     $(this).height($(window).height());
+        // });
+        // //屏幕高度发生变化
+        // $(window).resize(function(event) {
+        //     $('.section-bg').each(function(index, el) {
+        //         $(this).height($(window).height());
+        //     });
+        // });
+           var a_button=document.querySelectorAll('.a-button');
+        for(var i=0; i < a_button.length; i++){
+            a_button[i].onmousemove=function(e){
+                var x=e.offsetX;
+                var y=e.offsetY;
+                this.style.setProperty('--x',x+'px');
+                this.style.setProperty('--y',y+'px');
+            }
+        }
+        //fullPage
+        $('#fullpage').fullpage({
+            anchors: ['page1', 'page2', 'page3', 'page4','page5','page6','page7'],
+            navigation: true,
+            
+            afterRender:function(anchorLink,index){
+                    
+                    $('.lf-nav,#fp-nav').animate({'opacity':'0'},30,function(){
+                        $(this).hide();
+                        $.fn.fullpage.setAllowScrolling(false);
+                        $('.img1-bgone').removeClass('animated flipInX').css('opacity',0);
+                        $('video,.img2-bgone,.img3-bgone').removeClass('animated fadeIn bgone-delay').css('opacity',0);
+                        $('.img3-bgone').css('animation-name', '');
+                    })
+
+                        $('.section0').delay(3000).animate({'opacity':'0'},1000,function(){
+                            $(this).css({'display':'none'})
+                            $.fn.fullpage.setAllowScrolling(true);
+                            $('.lf-nav,#fp-nav').animate({'opacity':'1'},30,function(){
+                                $(this).show();
+                            })   
+                        });
+                        setTimeout(function(){
+                                $('.img1-bgone').addClass('animated flipInX').css('opacity',1);
+                                $('video,.img2-bgone,.img3-bgone').addClass('animated fadeIn bgone-delay').css('opacity',1);  
+                                $('.img3-bgone').css('animation-name','img3-bgone');
+                            },4200);
+    
+            },
+            
+            afterLoad:function(anchorLink, index){
+                if (index == 1) { 
+                    $('.img1-bgone').addClass('animated flipInX').css('opacity',1);
+                    $('video,.img2-bgone,.img3-bgone').addClass('animated fadeIn bgone-delay').css('opacity',1);
+                    $('.img3-bgone').css('animation-name','img3-bgone');
+                }
+                if(index == 2){
+                    $('.midd-two').addClass('animated slideInLeft').css('opacity',1);
+                    $('.img3-bgone').addClass('animated fadeIn').css({'animation-name':'img3-bgone','opacity':1});
+                }
+                if(index == 3){
+                    $('.midd-three').addClass('animated zoomInDown').css('opacity',1);
+                    $('.img3-bgone').addClass('animated fadeIn').css({'animation-name':'img3-bgone','opacity':1});
+                }
+                if(index == 4){
+                    $('.midd-four').addClass('animated slideInLeft').css('opacity',1);
+                    $('.img3-bgone').addClass('animated fadeIn').css({'animation-name':'img3-bgone','opacity':1});
+                }
+                if(index == 5){
+                    $('.midd-five').addClass('animated zoomInDown').css('opacity',1);
+                    $('.img3-bgone').addClass('animated fadeIn').css({'animation-name':'img3-bgone','opacity':1});
+                }
+                if(index == 6){
+                    $('.midd-six').addClass('animated slideInRight').css('opacity',1);
+                    $('.img3-bgone').addClass('animated fadeIn').css({'animation-name':'img3-bgone','opacity':1});
+                }
+                if(index == 7){
+                    $('.midd-seven').addClass('animated slideInLeft').css('opacity',1);
+                }
+            },
+            
+            onLeave:function (index, nextIndex, direction){
+                if (index == 1) {
+                    $('.img1-bgone').removeClass('animated flipInX').css('opacity',0);
+                    $('video,.img2-bgone,.img3-bgone').removeClass('animated fadeIn bgone-delay').css('opacity',0);
+                    $('.img3-bgone').css('animation-name', '');
+                }
+                if(index == 2){
+                    $('.midd-two').removeClass('animated slideInLeft').css('opacity',0);
+                    $('.img3-bgone').removeClass('animated fadeIn').css({'animation-name':'','opacity':0});
+                }
+                if(index == 3){
+                    $('.midd-three').removeClass('animated zoomInDown').css('opacity',0);
+                    $('.img3-bgone').removeClass('animated fadeIn').css({'animation-name':'img3-bgone','opacity':0});
+                }
+                if(index == 4){
+                    $('.midd-four').removeClass('animated slideInLeft').css('opacity',0);
+                    $('.img3-bgone').removeClass('animated fadeIn').css({'animation-name':'','opacity':0});
+                }
+                if(index == 5){
+                    $('.midd-five').removeClass('animated zoomInDown').css('opacity',0);
+                    $('.img3-bgone').removeClass('animated fadeIn').css({'animation-name':'','opacity':0});
+                }
+                if(index == 6){
+                    $('.midd-six').removeClass('animated slideInRight').css('opacity',0);
+                    $('.img3-bgone').removeClass('animated fadeIn').css({'animation-name':'','opacity':0});
+                }
+                if(index == 7){
+                    $('.midd-seven').removeClass('animated slideInLeft').css('opacity',0);
+                }
+            }
+        });
+
+
+    });
+    </script>
+</head>
+<body>
+    <!-- nav开始 -->
+        <dl class="lf-nav">
+            <dt>
+                <p>大牌集结 · 婚纱名品荟</p>
+            </dt>
+            <dd>
+                <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_gk0525_20054/" target="_blank">GKBridal</a>
+            </dd>
+            <dd>
+                <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_nr0601_20256/" target="_blank">NORA REVE</a>
+            </dd>
+            <dd>
+                <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_tb0529_20120/" target="_blank">TopBridal</a>
+            </dd>
+            <dd>
+                <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_ws0601_20261/" target="_blank">WEISS</a>
+            </dd>
+            <dd>
+                <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_julia0529_20118/" target="_blank">JULIA</a>
+            </dd>
+            <dd>
+                <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_lf0617_19793/" target="_blank">LABELLINO</a>
+            </dd>
+        </dl>
+        <!-- nav结束 -->
+    <div id="fullpage">     
+        <!-- 1开始 -->
+        <div class="section bg-one">
+            <div class="section0">
+                 <img src="https://img.tthunbohui.cn/zhuanti/19933/GGf.gif" alt="">
+                
+            </div>
+            <img src="https://img.tthunbohui.cn/zhuanti/20516/pc_02.png" class="img1-bgone lf-absol" alt="" />
+            <video width="550" height="330" src="http://vod.tthunbohui.cn/dmp/other/1528041600/lifu0604.mp4" poster="https://img.tthunbohui.cn/zhuanti/20516/pc_03.jpg" controls="controls"></video>
+            <img src="https://img.tthunbohui.cn/zhuanti/20516/pc_04.png" class="img2-bgone lf-absol " alt="" /> 
+            <a href="#page2"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_05.png" class="img3-bgone lf-absol" alt="" /></a>  
+        </div>
+        <!-- 1结束 -->
+        <!-- 2开始 -->
+        <div class="section bg-two">
+            <div class="lf-midd midd-two lf-opacity">
+                <img src="https://img.tthunbohui.cn/zhuanti/20516/pc_07.png" class="img1-bgtwo lf-relat" alt="" />
+                <p class="text-bgtwo lf-shadow lf-relat">A boutique that brings together<br> 
+the world's top fashion wedding dress brands.</p>
+                <div class="a-button a-bgtwo lf-relat">
+                    <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_gk0525_20054/" target="_blank"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_08.png" alt="" /></a>
+                </div>
+            </div>
+            <a href="#page3"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_05.png" class="img3-bgone lf-absol" alt="" /></a>
+        </div>
+        <!-- 2结束 -->
+        <!-- 3开始 -->
+        <div class="section bg-three">
+            <div class="lf-midd midd-three lf-opacity">
+                <h3 class="h3-bgthree lf-shadow lf-relat">NORA REVE</h3>
+                <p class="p-bgthree lf-shadow lf-relat">A boutique that brings together<br> the world's top fashion wedding dress brands.</p>
+                <div class="a-button a-bgthree lf-relat">
+                    <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_nr0601_20256/" target="_blank"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_08.png" alt="" /></a>
+                </div>
+            </div>
+            <a href="#page4"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_05.png" class="img3-bgone lf-absol" alt="" /></a>
+        </div>
+        <!-- 3结束 -->
+        <!-- 4开始 -->
+        <div class="section bg-four">
+            <div class="lf-midd midd-four lf-opacity">
+                <img src="https://img.tthunbohui.cn/zhuanti/20516/pc_11.png" class="img1-bgfour lf-relat" alt="" />
+                <p class="p-bgfour lf-relat lf-shadow">A biggest wedding dress brand collection shop,<br>
+The agent's brand is Georges Hobeika、Zuhair Murad、<br>
+Mikael D、Jenny Packham and so on.</p>
+                <div class="a-button a-bgfour lf-relat">
+                    <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_tb0529_20120/" target="_blank"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_08.png" alt="" /></a>
+                </div>
+            </div>
+            <a href="#page5"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_05.png" class="img3-bgone lf-absol" alt="" /></a>
+        </div>
+        <!-- 4结束 -->
+        <!-- 5开始 -->
+        <div class="section bg-five">
+            <div class="lf-midd midd-five lf-opacity">
+                <img src="https://img.tthunbohui.cn/zhuanti/20516/pc_13.png" class="img1-bgfive lf-relat" alt="" />
+                <p class="p-bgfive lf-relat lf-shadow">It's aim to convey the very message of our interpretation<br>
+of love and beauty,dedicated to create the perfect oriental brides.</p>
+                <div class="a-button a-bgfive lf-relat">
+                    <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_ws0601_20261/" target="_blank"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_08.png" alt="" /></a>
+                </div>
+            </div>
+            <a href="#page6"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_05.png" class="img3-bgone lf-absol" alt="" /></a>
+        </div>
+        <!-- 5结束 -->
+        <!-- 6开始 -->
+        <div class="section bg-six">
+            <div class="lf-midd midd-six lf-opacity">
+                <img src="https://img.tthunbohui.cn/zhuanti/20516/pc_15.png" class="img1-bgsix lf-relat" alt="" />
+                <p class="p-bgsix lf-relat lf-shadow">ineffable ethereal pupe skills beautiful lines，<br>
+diversified fashion elements</p>
+                <div class="a-button a-bgsix lf-relat">
+                    <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_julia0529_20118/" target="_blank"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_08.png" alt="" /></a>
+                </div>
+            </div>
+            <a href="#page7"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_05.png" class="img3-bgone lf-absol" alt="" /></a>
+        </div>
+        <!-- 6结束 -->
+        <!-- 7开始 -->
+        <div class="section bg-seven">
+            <div class="lf-midd midd-seven lf-opacity">
+                <img src="https://img.tthunbohui.cn/zhuanti/20516/pc_17.png" class="img1-bgseven lf-relat" alt="" />
+                <p class="p-bgseven lf-relat lf-shadow">use imported top brands from Italy and Britain,<br>
+Create a delicate and comfortable wear experience.</p>
+                <div class="a-button a-bgseven lf-relat">
+                    <a href="https://bj.jiehun.com.cn/zhuanti/jhmall_hunshalifu_pc/zt_lf0617_19793/" target="_blank"><img src="https://img.tthunbohui.cn/zhuanti/20516/pc_08.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+        <!-- 7结束 -->
+    </div>
+</body>
+</html>
